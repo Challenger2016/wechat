@@ -7,8 +7,8 @@ public class WxApiUrlConstants {
   public static final String WX_QRCODE_SHOW_URL = "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=";
 
   // 获取access_token
-  public static String GET_ACCESS_TOKEN = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=#appid#&secret=#secret#";
-  public static String GET_JSCODE2_SESSION = "https://api.weixin.qq.com/sns/jscode2session?appid=#appid#&secret=#secret#&js_code=#jscode#&grant_type=authorization_code";
+  public static String GET_ACCESS_TOKEN = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$appid$&secret=$secret$";
+  public static String GET_JSCODE2_SESSION = "https://api.weixin.qq.com/sns/jscode2session?appid=$appid$&secret=$secret$&js_code=$jscode$&grant_type=authorization_code";
       
 
   //获取用户基本信息（包括UnionID机制）

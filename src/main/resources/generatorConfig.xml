@@ -43,11 +43,29 @@
         <table tableName="t_check_record"
                enableInsert="true" enableDeleteByPrimaryKey="true" enableSelectByPrimaryKey="true"
                enableUpdateByPrimaryKey="true"
-               enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false"
-               modelType="flat" domainObjectName="WxMiniprgmRelease">
+               enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
+               enableUpdateByExample="true"
+               modelType="flat" domainObjectName="CheckRecordPO">
             <property name="useActualColumnNames" value="false"/>
         </table>
+        <table tableName="t_wx_user"
+               enableInsert="true" enableDeleteByPrimaryKey="true" enableSelectByPrimaryKey="true"
+               enableUpdateByPrimaryKey="true"
+               enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
+               enableUpdateByExample="true"
+               modelType="flat" domainObjectName="WxUserPO">
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <table tableName="t_sys_dictionary"
+               enableInsert="true" enableDeleteByPrimaryKey="true" enableSelectByPrimaryKey="true"
+               enableUpdateByPrimaryKey="true"
+               enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
+               enableUpdateByExample="true"
+               modelType="flat" domainObjectName="SysDictionaryPO">
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <!-- mvn mybatis-generator:generate -->
+        
     </context>
 
 </generatorConfiguration>

@@ -42,7 +42,7 @@ public class WxMiniprgmSDK {
     String secret = wxConfig.getSecret();
     
     String getAccessTokenUrl = WxApiUrlConstants.GET_ACCESS_TOKEN;
-    getAccessTokenUrl.replace("#appid#", appid).replace("#secret#", secret);
+    getAccessTokenUrl.replace("$appid$", appid).replace("$secret$", secret);
     
     String resultString = AsyncHttpUtil.doGet(getAccessTokenUrl);
     if (StringUtils.isBlank(resultString)) {
@@ -70,7 +70,7 @@ public class WxMiniprgmSDK {
     String secret = wxConfig.getSecret();
     
     String getJscode2SessionUrl = WxApiUrlConstants.GET_JSCODE2_SESSION;
-    getJscode2SessionUrl.replace("#appid#", appid).replace("#secret#", secret).replace("#jscode#", jscode);
+    getJscode2SessionUrl = getJscode2SessionUrl.replace("$appid$", appid).replace("$secret$", secret).replace("$jscode$", jscode);
     
     String resultString = AsyncHttpUtil.doGet(getJscode2SessionUrl);
     if (StringUtils.isBlank(resultString)) {
@@ -88,6 +88,18 @@ public class WxMiniprgmSDK {
     
     log.info("获取Jscode2Session成功");
     return jsonObject;
+    
+  }
+  
+  public static void main(String[] args) {
+    
+    String getJscode2SessionUrl = WxApiUrlConstants.GET_JSCODE2_SESSION;
+    getJscode2SessionUrl = getJscode2SessionUrl.replace("$appid$", "wx499efff7ae899e05").replace("$secret$", "771e7ad9a65eea4b1e73238e25e7472c").replace("$jscode$", "023dSnbJ1AOWF20Ja5aJ1APgbJ1dSnbP");
+    
+    String resultString = AsyncHttpUtil.doGet(getJscode2SessionUrl);
+    if (StringUtils.isBlank(resultString)) {
+      log.error("调用微信接口获取code2Session失败，返回空");
+    }
     
   }
   

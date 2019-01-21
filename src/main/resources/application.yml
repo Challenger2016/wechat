@@ -1,15 +1,18 @@
 spring:
   profiles:
     active: dev
-
+server:
+  port: 8080
+  servlet:
+    context-path: /vision
 ---
 spring:
   profiles: dev
   redis:
-    database: 14
-    host: 192.168.1.50
+    database: 0
+    host: www.yshjh.com
     port: 6379
-    password: bizvane
+    password: e7KD4na37hPtRUUR
     jedis:
       pool:
         max-active: 100
@@ -19,14 +22,15 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    password: 1234
-    url: jdbc:mysql://localhost:3306/vision?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&autoReconnect=true
+    password: 123
+    url: jdbc:mysql://www.yshjh.com:3306/vision?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&autoReconnect=true
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
   swagger:
     show: true
-    
+mybatis:
+  mapper-locations: classpath:mybatis/*Mapper.xml    
 wx:
   config:
     appid: wx499efff7ae899e05

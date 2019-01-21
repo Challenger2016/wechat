@@ -3,6 +3,8 @@ package org.vision.wechat.controllers;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,10 +22,9 @@ public class WxMiniprgmController{
   @Autowired
   private WxMiniprgmService WxMiniprgmService;
   
-  @RequestMapping(value = "/by-code")
+  @PostMapping(value = "/by-code/{code}")
   @ResponseBody
-  public ResponseData<String> byCode(@NotNull @RequestParam("code") String code) {
-     
+  public ResponseData<String> byCode(@NotNull @PathVariable("code") String code) {
     
     return WxMiniprgmService.byCode(code);
   }

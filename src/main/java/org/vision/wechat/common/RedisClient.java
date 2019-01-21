@@ -38,7 +38,12 @@ public class RedisClient {
    * @return
    */
   public boolean exists(final String key) {
-    return this.redisTemplate.hasKey(key);
+    try {
+      return this.redisTemplate.hasKey(key);
+    } catch (Exception e) {
+      // TODO: handle exception
+    }
+    return false;
   }
 
   /**
