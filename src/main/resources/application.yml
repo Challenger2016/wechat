@@ -8,6 +8,8 @@ server:
 ---
 spring:
   profiles: dev
+  application: 
+    name: service-provider
   redis:
     database: 0
     host: www.yshjh.com
@@ -29,6 +31,13 @@ spring:
     time-zone: GMT+8
   swagger:
     show: true
+  cloud1:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  main: 
+    allow-bean-definition-overriding: true     
+        
 mybatis:
   mapper-locations: classpath:mybatis/*Mapper.xml    
 wx:

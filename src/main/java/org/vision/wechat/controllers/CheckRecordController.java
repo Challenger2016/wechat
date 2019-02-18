@@ -1,9 +1,6 @@
 package org.vision.wechat.controllers;
 
-import java.io.IOException;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,13 +11,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.vision.wechat.common.RedisClient;
 import org.vision.wechat.common.ResponseData;
-import org.vision.wechat.common.SysResponseEnum;
 import org.vision.wechat.model.CheckRecordGetListBO;
-import org.vision.wechat.persistence.model.CheckRecordPO;
-import org.vision.wechat.persistence.model.WxUserPO;
+import org.vision.wechat.persistence.model.VisionCheckReportPO;
 import org.vision.wechat.service.CheckRecordPOService;
 
-import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
 
 import io.swagger.annotations.Api;
@@ -37,36 +31,25 @@ public class CheckRecordController{
   private HttpServletRequest httpServletRequest;
   
   @Autowired
-  private HttpServletResponse httpServletResponse;
-  
-  @Autowired
   private RedisClient redisClient;
   
   @PostMapping(value = "/list")
   @ResponseBody
-  public ResponseData<PageInfo<CheckRecordPO>> list(@RequestBody CheckRecordGetListBO bo) {
+  public ResponseData<PageInfo<CheckRecordGetListBO>> list(@RequestBody CheckRecordGetListBO bo) {
      
-    ResponseData<PageInfo<CheckRecordPO>> responseData = new ResponseData<>();
-    
     String wechatSessionId = httpServletRequest.getHeader(HttpConstants.WECHAT_SESSION_ID);
-    Object object = redisClient.get(wechatSessionId + "_user");
-    if (object == null) {
-      responseData.setCode(SysResponseEnum.NOT_LOGIN.getCode());
-      responseData.setMessage(SysResponseEnum.NOT_LOGIN.getMessage());
-      return responseData;
-    }
+    String visionClientId = (String) redisClient.get(wechatSessionId + "_id");
     
-    WxUserPO wxUserPO = (WxUserPO) object;
-    bo.setWxUserId(wxUserPO.getWxUserId());
+    bo.setVisionClientId(visionClientId);
     
     return checkRecordPOService.list(bo);
   }
   
-  @PostMapping(value = "/find/{checkRecordId}")
+  @PostMapping(value = "/find/{id}")
   @ResponseBody
-  public ResponseData<CheckRecordPO> find(@PathVariable("checkRecordId") Integer checkRecordId) { 
+  public ResponseData<VisionCheckReportPO> find(@PathVariable("id") String id) { 
     
-    return checkRecordPOService.find(checkRecordId);
+    return checkRecordPOService.find(id);
   }
   
 

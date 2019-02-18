@@ -26,12 +26,12 @@ public enum SysResponseEnum {
     USER_BIND_THIRD_LOGIN_ERROR(110, "登录失败，用户被禁用！"),
     USER_LOGIN_FAILED_USER_DISABLE(111, "登录失败，密码错误！"),
     USER_LOGIN_FAILED(120, "登录失败，用户名或密码错误！"),
-    
-    USER_UPDATE_ERROR(112, "修改用户失败！"),
-    USER_MIBILE_NOT_EXIST(113, "该手机号不存在！"),
 
     NETWORK_ERROR(114,"网络异常！"),
     SYSTEM_ERROR(115,"系统内部错误！"),
+    
+    VISION_CLIENT_NO_EXIST(200, "关联失败，客户不存在！"),
+    VISION_CLIENT_RELATIONED(205, "关联失败，客户已被微信用户关联！"),
 
     UPLOAD_SUCCESS(116,"导入成功！"),
     UPLOAD_FAILED(117,"导入失败！");
