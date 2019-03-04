@@ -56,12 +56,12 @@
                modelType="flat" domainObjectName="VisionClientPO">
             <property name="useActualColumnNames" value="false"/>
         </table>
-        <table tableName="vision_check_report"
+        <table tableName="vision_check_record"
                enableInsert="true" enableDeleteByPrimaryKey="true" enableSelectByPrimaryKey="true"
                enableUpdateByPrimaryKey="true"
                enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
                enableUpdateByExample="true"
-               modelType="flat" domainObjectName="VisionCheckReportPO">
+               modelType="flat" domainObjectName="VisionCheckRecordPO">
             <property name="useActualColumnNames" value="false"/>
         </table>
         <table tableName="wx_client_vision_client"

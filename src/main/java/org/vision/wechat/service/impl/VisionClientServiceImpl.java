@@ -73,6 +73,8 @@ public class VisionClientServiceImpl implements VisionClientService {
     String wxClientId = bo.getWxClientId();
     
     WxClientVisionClientPOExample example = new WxClientVisionClientPOExample();
+    example.createCriteria().andVisionClientIdEqualTo(visionClientId)
+      .andWxClientIdEqualTo(wxClientId);
     long count = wxClientVisionClientPOMapper.countByExample(example);
     if (count > 0) {
       responseData.setCode(SysResponseEnum.VISION_CLIENT_RELATIONED.getCode());

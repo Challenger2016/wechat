@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.vision.wechat.common.RedisClient;
 import org.vision.wechat.common.ResponseData;
 import org.vision.wechat.model.CheckRecordGetListBO;
-import org.vision.wechat.persistence.model.VisionCheckReportPO;
+import org.vision.wechat.persistence.model.VisionCheckRecordPO;
 import org.vision.wechat.service.CheckRecordPOService;
 
 import com.github.pagehelper.PageInfo;
@@ -47,7 +47,7 @@ public class CheckRecordController{
   
   @PostMapping(value = "/find/{id}")
   @ResponseBody
-  public ResponseData<VisionCheckReportPO> find(@PathVariable("id") String id) { 
+  public ResponseData<VisionCheckRecordPO> find(@PathVariable("id") String id) { 
     
     return checkRecordPOService.find(id);
   }

@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.vision.wechat.common.ResponseData;
 import org.vision.wechat.model.CheckRecordGetListBO;
-import org.vision.wechat.persistence.mapper.VisionCheckReportPOMapper;
-import org.vision.wechat.persistence.model.VisionCheckReportPO;
+import org.vision.wechat.persistence.mapper.VisionCheckRecordPOMapper;
+import org.vision.wechat.persistence.model.VisionCheckRecordPO;
 import org.vision.wechat.service.CheckRecordPOService;
 
 import com.github.pagehelper.PageHelper;
@@ -17,13 +17,13 @@ import com.github.pagehelper.PageInfo;
 public class CheckRecordPOServiceImpl implements CheckRecordPOService {
   
   @Autowired
-  private VisionCheckReportPOMapper visionCheckReportPOMapper;
+  private VisionCheckRecordPOMapper visionCheckRecordPOMapper;
   
   @Override
   public ResponseData<PageInfo<CheckRecordGetListBO>> list(CheckRecordGetListBO bo) {
     PageHelper.offsetPage(bo.getPageNum(), bo.getPageSize());
     
-    List<CheckRecordGetListBO> list = visionCheckReportPOMapper.list(bo);
+    List<CheckRecordGetListBO> list = visionCheckRecordPOMapper.list(bo);
     
     ResponseData<PageInfo<CheckRecordGetListBO>> responseData  = new ResponseData<>();
     responseData.setData(new PageInfo<>(list));
@@ -32,10 +32,10 @@ public class CheckRecordPOServiceImpl implements CheckRecordPOService {
   }
 
   @Override
-  public ResponseData<VisionCheckReportPO> find(String id) {
-    VisionCheckReportPO po = visionCheckReportPOMapper.selectByPrimaryKey(id);
+  public ResponseData<VisionCheckRecordPO> find(String id) {
+    VisionCheckRecordPO po = visionCheckRecordPOMapper.selectByPrimaryKey(id);
     
-    ResponseData<VisionCheckReportPO> responseData = new ResponseData<VisionCheckReportPO>();
+    ResponseData<VisionCheckRecordPO> responseData = new ResponseData<VisionCheckRecordPO>();
     responseData.setData(po);
     return responseData;
   }
